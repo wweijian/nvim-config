@@ -78,3 +78,9 @@ Leader key is `Space`.
 | Key | Action |
 |-----|--------|
 | `Space + ?` | Show buffer-local keymaps |
+
+## Colorscheme
+
+`colors/ghostty.lua` uses only cterm colour indices — no hex values. The intention is that the Ghostty theme bleeds through into Neovim directly, rather than using a separate Neovim theme that has to be kept in sync. Change the palette in Ghostty and Neovim updates automatically with no extra configuration.
+
+The indices are mapped semantically to syntax roles: accent colours cover things like keywords, strings, functions, types, and constants, while background/foreground tones handle normal text and UI chrome.

@@ -48,6 +48,22 @@ return {
 
   {
     "folke/snacks.nvim",
+    opts = {
+      picker = {
+        win = {
+          input = {
+            keys = {
+              ["<Space>"] = { "confirm", mode = "n" },
+            },
+          },
+          list = {
+            keys = {
+              ["<Space>"] = "confirm",
+            },
+          },
+        },
+      },
+    },
     keys = {
       {
         "<leader>og",
@@ -62,6 +78,14 @@ return {
           Snacks.terminal({ "lazydocker" }, { cwd = LazyVim.root() })
         end,
         desc = "Open LazyDocker",
+      },
+      {
+        "<leader>ocs",
+        function()
+          local cheatsheet = vim.fn.stdpath("config") .. "/cheat-sheet.md"
+          Snacks.terminal({ "less", "-R", cheatsheet })
+        end,
+        desc = "Open cheatsheet",
       },
       {
         "<leader>ff",

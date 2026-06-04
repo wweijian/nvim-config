@@ -23,6 +23,7 @@ This sheet is for this Neovim config, not stock LazyVim only.
 | `\:` | Command history |
 | `\n` | Notification history |
 | `\?` | Buffer-local keymaps |
+| `\ocs` | Open cheatsheet |
 | `<Esc>` | Clear search highlight |
 
 ## Movement

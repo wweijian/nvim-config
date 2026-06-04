@@ -50,6 +50,20 @@ return {
     "folke/snacks.nvim",
     keys = {
       {
+        "<leader>og",
+        function()
+          Snacks.lazygit({ cwd = LazyVim.root.git() })
+        end,
+        desc = "Open LazyGit",
+      },
+      {
+        "<leader>od",
+        function()
+          Snacks.terminal({ "lazydocker" }, { cwd = LazyVim.root() })
+        end,
+        desc = "Open LazyDocker",
+      },
+      {
         "<leader>ff",
         function()
           Snacks.picker.files()

@@ -1,228 +1,339 @@
-# VIM CHEATSHEET
+# LazyVim Cheatsheet
 
-## Cursor Movement
-w                       start of word
-e                       End of word
-b                       Back start of word
-W                       start of Word with punctuation
-E                       End of word with punctuation
-B                       Back of word with punctuation
+This sheet is for this Neovim config, not stock LazyVim only.
 
-### g movement
-gg                      jump to first line of document  
-G                       jump to last line of document
-5gg                     jump to line 5
-5G                      jump to line 5
+- Leader: `\`
+- Local leader: `Space`
+- Open the interactive keymap helper: `\?`
+- Open Lazy plugin manager: `\l`
 
-ge                      jump backwards to end of word
-gE                      jump backwards to end of word with punctuation
-gd                      move to local declaration
-gD                      move to global declaration
+## Daily Driver
 
-### t movement
-fx                      jump to next occurence of character x
-Fx                      jump to previous occurence of character x
-tx                      jump to before next occurence of character x
-Tx                      jump to previous occurence of character x
-;                       repeat previous f/t movement
-,                       repeat previous f/t movement backward
+| Key | Action |
+| --- | --- |
+| `\ Space` | Find files from project root |
+| `\ff` | Find files |
+| `\fg` | Live grep |
+| `\fb` | Buffers |
+| `\fh` | Help tags |
+| `\e` | Explorer from project root |
+| `\E` | Explorer from cwd |
+| `\,` | Buffer picker |
+| `\/` | Grep from project root |
+| `\:` | Command history |
+| `\n` | Notification history |
+| `\?` | Buffer-local keymaps |
+| `<Esc>` | Clear search highlight |
 
-### paragraph movement
-}                       jump to next paragraph or function block                            
-{                       jump to previous paragraph or function block
-%                       move cursor to matching character
-0                       jump to start of line
-^                       jump to first non-blank
-$                       jump to end of line character
+## Movement
 
-### z movement
-zb                      position cursor at bottom of screen
-zt                      position cursor at top of screen
-zz                      center cursor on screen
-ctrl + e                move screen down one line
-ctrl + y                move screen up one line
-ctrl + b                move screen up by one page (cursor to last line)
-ctrl + f                move screen down one page (cursor to first line)
-ctrl + d                move cursor and screen down 1/2 page
-ctrl + u                move cursor and screen up 1/2 page
+| Key | Action |
+| --- | --- |
+| `h` `j` `k` `l` | Left, down, up, right |
+| `w` / `W` | Next word / next WORD |
+| `b` / `B` | Previous word / previous WORD |
+| `e` / `E` | End of word / end of WORD |
+| `gg` | First line |
+| `G` | Last line |
+| `{count}G` | Go to line |
+| `0` | Start of line |
+| `^` | First non-blank character |
+| `$` | End of line |
+| `%` | Matching pair |
+| `{` / `}` | Previous / next paragraph or block |
+| `Ctrl-d` / `Ctrl-u` | Half page down / up |
+| `Ctrl-f` / `Ctrl-b` | Page down / up |
+| `zz` | Center cursor |
+| `zt` / `zb` | Cursor line at top / bottom |
 
-## Insert Mode
-i                       enter Insert mode
-I                       enter Insert mode at the beginning of the line
-a                       Append mode after the cursor
-A                       Append mode at the end of the line
-o                       Insert below the cursor
-O                       Insert above the cursor
-Ctrl + h                delete backward one character in insert mode
-Ctrl + w                delete word before the cursor in insert mode
-Ctrl + t                indent (move right) one shiftwidth in insert mode
-Ctrl + d                dedent (move left) one shiftwidth in insert mode
-Ctrl + r'x'             insert the contents of register x in insert mode
-Ctrl + o'x'             temporarily switch to insert mode for one command
+## Flash Jump
+
+| Key | Action |
+| --- | --- |
+| `s` | Flash jump |
+| `S` | Flash Treesitter |
+| `r` after operator | Remote Flash motion, for example `yr` |
+| `R` in visual/operator mode | Treesitter search |
 
 ## Editing
-r                       Replace a single character
-R                       Enter Replace mode
-J                       Join line below to the current one with space
-gJ                      Join line to the current one without space
-g~                      switch case up to motion
-gu                      change to lowercase up to motion
-gU                      change to uppercase up to motion
-cc                      Change (replace) the entire line
-c$ | C                  Change to the end of the ilne
-ciw                     Change the entire word
-cw | ce                 Change to the end of the word 
-u                       undo
-U                       Undo last changed line
-ctrl + r                redo
-.                       repeat last command
 
-## Visual mode
-v                       start visual mode
-V                       linewise visual mode
-ctrl + v                visual block mode
+| Key | Action |
+| --- | --- |
+| `i` / `I` | Insert before cursor / start of line |
+| `a` / `A` | Insert after cursor / end of line |
+| `o` / `O` | New line below / above |
+| `r` | Replace one character |
+| `R` | Replace mode |
+| `u` | Undo |
+| `Ctrl-r` | Redo |
+| `.` | Repeat last change |
+| `J` | Join line with space |
+| `gJ` | Join line without space |
+| `cc` | Change whole line |
+| `C` | Change to end of line |
+| `ciw` | Change inner word |
+| `yiw` | Yank inner word |
+| `diw` | Delete inner word |
+| `dd` | Delete line |
+| `D` | Delete to end of line |
+| `x` | Delete character |
+| `p` / `P` | Paste after / before cursor |
+| `gcc` | Toggle comment line |
+| `gc` + motion | Toggle comment over motion |
+| `gco` / `gcO` | Add commented line below / above |
+| `Alt-j` / `Alt-k` | Move line or selection down / up |
+| `Alt-Down` / `Alt-Up` | Move line or selection down / up |
+| `Ctrl-s` | Save file |
 
-o                       move to the other end of marked area
+## Visual Mode
 
-aw                      mark a word
-ab                      mark a block with ()
-aB                      mark a block with {}
-at                      mark a block with <>
-ib                      inner block with ()
-iB                      inner block with P{
-it                      inner block with <>
+| Key | Action |
+| --- | --- |
+| `v` | Characterwise visual mode |
+| `V` | Linewise visual mode |
+| `Ctrl-v` | Block visual mode |
+| `o` | Move to other end of selection |
+| `<` / `>` | Indent left / right and keep selection |
+| `y` | Yank selection |
+| `d` | Delete selection |
+| `gc` | Toggle comment selection |
+| `\tf` | Format selection |
+| `\sw` | Search selected text in project root |
+| `\sW` | Search selected text in cwd |
 
-## Visual Commands
-'>'                     shift text right
-'<'                     shift text left
-y                       Yank marked text
-d                       Delete marked text
-~                       switch case
+## Text Objects
 
-## Registers
-:reg[isters]            show registers content
-"xy                     yank into register x
-"xp                     paste contents of register x
-"+y                     yank into system clipboard register
-"+p                     paste from system clipboard register
+| Key | Action |
+| --- | --- |
+| `iw` / `aw` | Inner word / a word |
+| `ip` / `ap` | Inner paragraph / a paragraph |
+| `i"` / `a"` | Inside / around double quotes |
+| `i'` / `a'` | Inside / around single quotes |
+| `` i` `` / `` a` `` | Inside / around backticks |
+| `ib` / `ab` | Inside / around parentheses |
+| `iB` / `aB` | Inside / around braces |
+| `it` / `at` | Inside / around tag |
 
-### Special registers
-0                       last yank
-"                       unnamed register, last delete or yank
-%                       current file name
-#                       alternate file name
-*                       clipboard contents (X11 primary)
-+                       clipboard contents (X11 clipboard)
-/                       last search pattern
-:                       last command-line
-.                       last inserted text
--                       last small (less than a line) delete
-=                       expression register
-_                       black hole register
+## Search And Replace
 
-## Marks and Positions
-:marks                  list of marks
-m'a'                    set current position for mark A (as in any char)
-`'a'                    jump to position of mark A
-y`'a'                   yank text to position of mark A
+| Key | Action |
+| --- | --- |
+| `/pattern` | Search forward |
+| `?pattern` | Search backward |
+| `n` / `N` | Next / previous search result |
+| `*` / `#` | Search word under cursor forward / backward |
+| `:%s/old/new/g` | Replace in file |
+| `:%s/old/new/gc` | Replace in file with confirmation |
+| `\sr` | Search and replace with Grug Far |
 
-:jumps                  list of jumps
-ctrl + i                go to newer position in jump list
-ctrl + o                go to older position in jump list
+## Files And Pickers
 
-:changes
-g,                      go to newer postion in jump list
-g;                      go to older postion in jump list
-ctrl + ]                jump to the tag under cursor
+| Key | Action |
+| --- | --- |
+| `\ff` | Find files |
+| `\fF` | Find files from cwd |
+| `\fc` | Find config file |
+| `\fg` | Live grep |
+| `\fr` | Recent files |
+| `\fR` | Recent files from cwd |
+| `\fp` | Projects |
+| `\fn` | New file |
+| `\fe` | Explorer from project root |
+| `\fE` | Explorer from cwd |
+| `\fb` | Buffers |
+| `\fB` | All buffers |
+| `\ft` | Terminal from project root |
+| `\fT` | Terminal from cwd |
+| `Ctrl-/` | Toggle terminal |
 
-## Macros
-q'a'                    record macro 'a'
-q                       stop recording macro
-@'a'                    run macro a
-@@                      run last macro
+## Search Pickers
 
-## Cut and Paste
-yw                      yank word from cursor to start of next word
-yiw                     yank word under the cursor
-yaw                     yank word under the cursor and the space after it
-y$ or Y                 yank to end of the line
+| Key | Action |
+| --- | --- |
+| `\sg` | Grep from project root |
+| `\sG` | Grep from cwd |
+| `\sb` | Buffer lines |
+| `\sB` | Grep open buffers |
+| `\sw` | Search word or visual selection from project root |
+| `\sW` | Search word or visual selection from cwd |
+| `\sd` | Diagnostics |
+| `\sD` | Buffer diagnostics |
+| `\sh` | Help pages |
+| `\sk` | Keymaps |
+| `\sm` | Marks |
+| `\sj` | Jumps |
+| `\sq` | Quickfix list |
+| `\sl` | Location list |
+| `\su` | Undotree |
+| `\st` | Todo comments |
+| `\sT` | Todo/Fix/Fixme comments |
 
-p                       paste the clipboard after the cursor
-P                       paste before the cursor
-gp                      paste clipboard after curosr and leave after
+## Buffers
 
-dd                      delete a line
-2dd                     delete 2 line
-dw                      delete the characters of the word from cursor
-                        to start of next word
-diw                     delete word under the cursor
-daw                     delete word under the cursor and space after it
-:3,5d                   delete lines from line 3 to 5
+| Key | Action |
+| --- | --- |
+| `H` / `L` | Previous / next buffer |
+| `[b` / `]b` | Previous / next buffer |
+| `\bb` | Switch to alternate buffer |
+| `` \` `` | Switch to alternate buffer |
+| `\bd` | Delete buffer |
+| `\bD` | Delete buffer and window |
+| `\bo` | Delete other buffers |
+| `\bi` | Delete invisible buffers |
+| `\bp` | Toggle buffer pin |
+| `\bP` | Delete non-pinned buffers |
+| `\bl` / `\br` | Delete buffers to left / right |
+| `\bj` | Pick buffer |
 
-:g/{pattern}/d          delete all lines containing pattern
-:g!/{pattern}/d         delete all lines not containing pattern
-d$ or D                 delete till the end of the line
-x                       delete a single character
+## Windows And Tabs
 
-## Indent Text
->>                      indent (move right) line one shift width
-<<                      de-indent line one shiftwidth
->%                      indent a block with () or {}
-<%                      indent a block with () or {}
->ib                     indent inner block with ()
->at                     indent a block with <> tags
-3==                     re-indent 3 lines
-=%                      re-indent a block with () or {}
-=ib                     re-indent a block with <> tags
-gg=G                    re-indent entire bbuffer
-]p                      oaste and adjust indent to current line
+| Key | Action |
+| --- | --- |
+| `Ctrl-h/j/k/l` | Move to left/lower/upper/right window |
+| `Ctrl-Up/Down` | Increase / decrease window height |
+| `Ctrl-Left/Right` | Decrease / increase window width |
+| `\-` | Horizontal split below |
+| `\` then `Shift-\` | Vertical split right |
+| `\wd` | Delete window |
+| `\wm` | Toggle window zoom |
+| `\uz` | Toggle zen mode |
+| `\uZ` | Toggle zoom |
+| `\<Tab><Tab>` | New tab |
+| `\<Tab>]` / `\<Tab>[` | Next / previous tab |
+| `\<Tab>d` | Close tab |
+| `\<Tab>o` | Close other tabs |
+| `\<Tab>f` / `\<Tab>l` | First / last tab |
 
-## Search and Replace
+## LSP And Diagnostics
 
-/pattern                search for pattern
-?attern                 search backwards for pattern
-\vpattern               'very magic'pattern (regex)
-n                       repeat search in same direct
-N                       repeat search in same direct
-:%s/old/new/g           replace old with new throughout file
-:%s/old/new/gc          replace all old with new throughout file with
-                        confirmations
-:noh[lsearch]           remove highlighting of search matches
+| Key | Action |
+| --- | --- |
+| `gd` | Go to definition |
+| `grr` | References |
+| `gri` | Implementation |
+| `grt` | Type definition |
+| `gra` | Code action |
+| `grn` | Rename |
+| `\rn` | Rename symbol |
+| `\cf` | Format |
+| `\tf` | Format buffer or selection |
+| `\cF` | Format injected languages |
+| `\cd` | Line diagnostics |
+| `\td` | Toggle diagnostics |
+| `[d` / `]d` | Previous / next diagnostic |
+| `[e` / `]e` | Previous / next error |
+| `[w` / `]w` | Previous / next warning |
+| `\cs` | Symbols in Trouble |
+| `\cS` | LSP references/definitions in Trouble |
+| `\xx` | Diagnostics in Trouble |
+| `\xX` | Buffer diagnostics in Trouble |
+| `\xq` | Quickfix list |
+| `\xl` | Location list |
 
-## Working with multiple files
-:e                      edit a file in buffer
-:ls or :buffers         list all open buffers
+## Git
 
-## Navigation — Harpoon
-Space + a               Add file to harpoon list
-Ctrl + h                Toggle harpoon quick menu
-Ctrl + 1                Jump to harpoon slot 1
-Ctrl + 2                Jump to harpoon slot 2
-Ctrl + 3                Jump to harpoon slot 3
-Ctrl + 4                Jump to harpoon slot 4
+| Key | Action |
+| --- | --- |
+| `\og` | Open LazyGit from git root |
+| `\gd` | Git diff hunks |
+| `\gD` | Git diff against origin |
+| `\gs` | Git status |
+| `\gS` | Git stash |
+| `\gb` | Git blame line |
+| `\gf` | Current file history |
+| `\gl` | Git log from project root |
+| `\gL` | Git log from cwd |
+| `\gB` | Open Git browse URL |
+| `\gY` | Copy Git browse URL |
 
-## Search — Telescope
-Space + ff              Find files
-Space + fg              Live grep (search text)
-Space + fb              Buffers
-Space + fh              Help tags
+## Harpoon
 
-## LSP
-Space + rn              Rename symbol
-Space + td              Toggle diagnostics
+| Key | Action |
+| --- | --- |
+| `\ha` | Add current file to Harpoon |
+| `\hh` | Toggle Harpoon quick menu |
+| `Ctrl-1` | Jump to Harpoon file 1 |
+| `Ctrl-2` | Jump to Harpoon file 2 |
+| `Ctrl-3` | Jump to Harpoon file 3 |
+| `Ctrl-4` | Jump to Harpoon file 4 |
 
-## Formatting & Linting
-Space + tf              Format buffer
-Space + tl              Toggle linting
+## Toggles
 
-## Editing
-Alt + j                 Move line up
-Alt + k                 Move line down
-Alt + Up                Move line up
-Alt + Down              Move line down
+| Key | Action |
+| --- | --- |
+| `\uf` | Toggle auto format |
+| `\uF` | Toggle auto format for current buffer |
+| `\ud` | Toggle diagnostics |
+| `\us` | Toggle spelling |
+| `\uw` | Toggle wrap |
+| `\ul` | Toggle line numbers |
+| `\uL` | Toggle relative line numbers |
+| `\uc` | Toggle conceal level |
+| `\uA` | Toggle tabline |
+| `\uT` | Toggle Treesitter |
+| `\ub` | Toggle dark background |
+| `\uD` | Toggle dim |
+| `\ua` | Toggle animations |
+| `\ug` | Toggle indent guides |
+| `\uS` | Toggle smooth scroll |
+| `\uh` | Toggle inlay hints |
+| `\uC` | Colorschemes |
+| `\ur` | Redraw, clear search, and update diff |
 
-## General
-Space + ?               Show buffer-local keymaps (which-key)
-Esc                     Clear search highlight
+## Sessions, Quit, And Tools
 
+| Key | Action |
+| --- | --- |
+| `\qs` | Restore session |
+| `\ql` | Restore last session |
+| `\qS` | Select session |
+| `\qd` | Do not save current session |
+| `\qq` | Quit all |
+| `\od` | Open LazyDocker |
+| `\cm` | Mason |
+| `\L` | LazyVim changelog |
+| `\ui` | Inspect cursor position |
+| `\uI` | Inspect Treesitter tree |
 
+## Registers, Marks, And Macros
+
+| Key | Action |
+| --- | --- |
+| `:reg` | Show registers |
+| `"ay` | Yank into register `a` |
+| `"ap` | Paste from register `a` |
+| `"+y` / `"+p` | Yank / paste system clipboard |
+| `"_d` | Delete into black-hole register |
+| `ma` | Set mark `a` |
+| `` `a `` | Jump to mark `a` |
+| `:marks` | List marks |
+| `q a` | Record macro into register `a` |
+| `q` | Stop recording macro |
+| `@a` | Run macro `a` |
+| `@@` | Repeat last macro |
+
+## Supermaven
+
+| Key or command | Action |
+| --- | --- |
+| `<Tab>` | Accept completion, snippet jump, or AI suggestion when available |
+| `Ctrl-]` | Clear inline Supermaven suggestion |
+| `Ctrl-j` | Accept next word of Supermaven suggestion |
+| `:SupermavenToggle` | Toggle Supermaven |
+| `:SupermavenStatus` | Show Supermaven status |
+| `:SupermavenUseFree` | Use free tier |
+| `:SupermavenUsePro` | Use pro tier |
+
+## Command-Line Basics
+
+| Command | Action |
+| --- | --- |
+| `:w` | Write file |
+| `:q` | Quit window |
+| `:wq` | Write and quit |
+| `:qa` | Quit all |
+| `:e path` | Edit file |
+| `:bnext` / `:bprevious` | Next / previous buffer |
+| `:checkhealth` | Run health checks |
+| `:Lazy` | Open plugin manager |
+| `:Mason` | Open Mason |

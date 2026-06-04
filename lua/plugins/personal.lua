@@ -6,14 +6,14 @@ return {
     opts = {},
     keys = {
       {
-        "<leader>a",
+        "<leader>ha",
         function()
           require("harpoon"):list():add()
         end,
         desc = "Add file to Harpoon",
       },
       {
-        "<C-h>",
+        "<leader>hh",
         function()
           local harpoon = require("harpoon")
           harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -47,18 +47,6 @@ return {
           require("harpoon"):list():select(4)
         end,
         desc = "Harpoon file 4",
-      },
-    },
-  },
-
-  {
-    "supermaven-inc/supermaven-nvim",
-    event = "InsertEnter",
-    opts = {
-      keymaps = {
-        accept_suggestion = "<Tab>",
-        clear_suggestion = "\\",
-        accept_word = "<C-l>",
       },
     },
   },
